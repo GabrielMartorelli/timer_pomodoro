@@ -1,28 +1,42 @@
+/* It's getting the elements from the HTML page. */
 let acao = document.getElementById("acao");
 let pausa = document.getElementById("pausa");
 let sessoes = document.getElementById("sessoes");
 let segundos;
 
+/* It's creating a new Audio object. */
 var bell = new Audio("./audio/bell.mp3");
 var volta = new Audio("./audio/volta.mp3");
 var final = new Audio("./audio/final.mp3");
 
+/* It's getting the elements from the HTML page. */
 var lofi = document.getElementById("lofi");
 var pause = document.getElementById("pause");
 var play = document.getElementById("play");
 
+/**
+ * It pauses the audio and changes the play button to a pause button.
+ */
 function pausar() {
   lofi.pause();
   play.style.setProperty("display", "block", "important");
   pause.style.setProperty("display", "none", "important");
 }
 
+/**
+ * When the user clicks the play button, the audio file will play and the play button will be hidden
+ * and the pause button will be shown.
+ */
 function executar() {
   lofi.play();
   play.style.setProperty("display", "none", "important");
   pause.style.setProperty("display", "block", "important");
 }
 
+/**
+ * If the user has not entered a value for the action, pause, or session, then display an error
+ * message. Otherwise, play the music, display the pause button, and hide the configuration section.
+ */
 function iniciar() {
   if (acao.value == 0) {
     document.getElementById("erro_acao").innerHTML = "Adicione os minutos";
@@ -52,6 +66,10 @@ function iniciar() {
   }
 }
 
+/**
+ * It's a timer that counts down from the value of the variable "min" (which is set to the value of the
+ * localStorage item "acao") and when it reaches 0, it calls the function "momentoPausa()".
+ */
 function momentoAcao() {
   let sessoes_valor = localStorage.getItem("sessoes");
 
@@ -100,6 +118,10 @@ function momentoAcao() {
   }
 }
 
+/**
+ * It's a countdown timer that counts down from the value of the variable min_pausa, which is set to
+ * the value of the localStorage item "pausa" (which is set by the user in the config page).
+ */
 function momentoPausa() {
   let title = document.getElementById("title");
   title.innerHTML = "PAUSA";
