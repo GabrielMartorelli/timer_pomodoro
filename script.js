@@ -3,9 +3,9 @@ let pausa = document.getElementById("pausa");
 let sessoes = document.getElementById("sessoes");
 let segundos;
 
-var bell = new Audio("./audio/audio_bell.mp3");
-var volta = new Audio("./audio/audio_ volta.mp3");
-var final = new Audio("./audio/audio_final.mp3");
+var bell = new Audio("./audio/bell.mp3");
+var volta = new Audio("./audio/volta.mp3");
+var final = new Audio("./audio/final.mp3");
 
 var lofi = document.getElementById("lofi");
 var pause = document.getElementById("pause");
@@ -31,7 +31,7 @@ function iniciar() {
     document.getElementById("erro_pausa").innerHTML = "Adicione a pausa";
     pausa.focus();
   } else if (sessoes.value == 0) {
-    document.getElementById("erro_sessoes").innerHTML = "Adicione as sessoes";
+    document.getElementById("erro_sessoes").innerHTML = "Adicione as sessões";
     sessoes.focus();
   } else {
     lofi.play();
@@ -69,7 +69,7 @@ function momentoAcao() {
   title.style.fontWeight = "bold";
   title.style.setProperty("color", "#28a745", "important");
 
-  min = Number(localStorage.getItem(acao));
+  min = Number(localStorage.getItem("acao"));
   min = min - 1;
   segundos = 59;
 
@@ -107,7 +107,7 @@ function momentoPausa() {
   title.style.fontWeight = "bold";
   title.style.setProperty("color", "#dc3545", "important");
 
-  min_pausa = Number(localStorage.getItem(pausa));
+  min_pausa = Number(localStorage.getItem("pausa"));
   min_pausa = min_pausa - 1;
   segundos = 59;
 
